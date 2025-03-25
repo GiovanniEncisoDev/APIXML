@@ -1,0 +1,140 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Título principal */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00aaff;
+}
+
+/* Contenedor de input y botones */
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Entrada de texto */
+input {
+  width: 250px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #00aaff;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #0077cc;
+}
+
+/* Botones de ícono */
+.icon-button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-button:hover {
+  background-color: #0055aa;
+}
+
+/* Botón de prueba */
+#btn-prueba {
+  background-color: #ffaa00;
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  margin: 5px;
+}
+
+#btn-prueba:hover {
+  background-color: #cc8800;
+}
+
+/* Contenedor de resultados */
+#resultado {
+  background-color: #1e1e1e;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 170, 255, 0.5);
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilo para palabras y significado */
+h2 {
+  color: #00aaff;
+}
+
+h3 {
+  color: #ffaa00;
+  margin-top: 15px;
+}
+
+p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Estilo para el reproductor de audio */
+audio {
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .input-container {
+    flex-direction: column;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .icon-button {
+    width: 100%;
+  }
+
+  #resultado {
+    width: 90%;
+  }
+}
