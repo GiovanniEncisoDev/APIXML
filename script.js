@@ -55,15 +55,11 @@ function consultarPalabraXML(palabra) {
   let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${palabra}`;
   let xhr = new XMLHttpRequest();
 
-  console.log(`📡 Enviando solicitud a: ${url}`); // Verifica la URL en la consola
-
   xhr.open('GET', url, true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      console.log(`✅ Estado: ${xhr.status}`); // Verifica el estado de la respuesta
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText);
-        console.log('📦 Respuesta recibida:', data); // Muestra los datos en consola
         mostrarResultado(data);
       } else {
         resultado.innerHTML = `<p style="color:red;">No se encontró la palabra: "${palabra}"</p>`;
@@ -72,7 +68,6 @@ function consultarPalabraXML(palabra) {
   };
   xhr.send();
 }
-
 
 // Función para mostrar resultados en la página (evita código duplicado)
 function mostrarResultado(data) {
