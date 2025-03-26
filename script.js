@@ -14,12 +14,14 @@ btnConsultar.addEventListener('click', () => {
 });
 
 // Evento para consulta con XMLHttpRequest (botón de código)
-btnConsultarXML.addEventListener('click', () => {
-  let palabra = inputPalabra.value.trim().toLowerCase();
-  if (palabra !== '') {
-    consultarPalabraXML(palabra);
-  }
-});
+if (btnConsultarXML) {
+  btnConsultarXML.addEventListener('click', () => {
+    let palabra = inputPalabra.value.trim().toLowerCase();
+    if (palabra !== '') {
+      consultarPalabraXML(palabra);
+    }
+  });
+}
 
 // Evento para limpiar el input y los resultados
 btnLimpiar.addEventListener('click', () => {
@@ -35,7 +37,12 @@ inputPalabra.addEventListener('keydown', (event) => {
   }
 });
 
-// Función para consultar la API con Fetch (ya existente)
+// Evento para consulta de prueba con "hello"
+btnPrueba.addEventListener('click', () => {
+  consultarPalabra('hello'); // Usa XMLHttpRequest si prefieres: consultarPalabraXML('hello');
+});
+
+// Función para consultar la API con Fetch
 async function consultarPalabra(palabra) {
   let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${palabra}`;
   try {
@@ -55,11 +62,15 @@ function consultarPalabraXML(palabra) {
   let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${palabra}`;
   let xhr = new XMLHttpRequest();
 
+  console.log(`📡 Enviando solicitud a: ${url}`);
+
   xhr.open('GET', url, true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
+      console.log(`✅ Estado: ${xhr.status}`);
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText);
+        console.log('📦 Respuesta recibida:', data);
         mostrarResultado(data);
       } else {
         resultado.innerHTML = `<p style="color:red;">No se encontró la palabra: "${palabra}"</p>`;
@@ -69,7 +80,7 @@ function consultarPalabraXML(palabra) {
   xhr.send();
 }
 
-// Función para mostrar resultados en la página (evita código duplicado)
+// Función para mostrar resultados en la página
 function mostrarResultado(data) {
   let palabraInfo = data[0];
   let audioUrl = palabraInfo.phonetics.find(p => p.audio)?.audio || '';
